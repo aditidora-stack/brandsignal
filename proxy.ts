@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { LINK_HEADER, isDemoDeploy, wantsMarkdown } from "@/lib/agent-discovery";
+import { OWNER_COOKIE, PAID_PATHS, ownerToken, safeEqual } from "@/lib/shared/owner-lock";
 
 /**
  * Best-effort IP rate limiting for all /api/* routes (Next.js 16 "proxy",
@@ -34,7 +35,7 @@ const DEFAULT_LIMIT = { limit: 30, windowMs: 60_000 };
 
 export const config = { matcher: ["/api/:path*", "/", "/demo"] };
 
-export function proxy(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;
 
   // Agent discovery for the public demo deploy only (see lib/agent-discovery.ts).
@@ -57,6 +58,22 @@ export function proxy(req: NextRequest) {
       { error: "Live API calls are disabled on this demo." },
       { status: 403 },
     );
+  }
+
+  // BrandSignal owner lock: paid routes need the owner cookie set by /unlock.
+  if (PAID_PATHS.has(path)) {
+    const password = process.env.BRANDSIGNAL_OWNER_PASSWORD;
+    const cookie = req.cookies.get(OWNER_COOKIE)?.value ?? "";
+    const ok = !!password && safeEqual(cookie, await ownerToken(password));
+    if (!ok) {
+      return NextResponse.json(
+        {
+          error:
+            "Live searches are locked. The site owner can unlock them at /unlock.",
+        },
+        { status: 401 },
+      );
+    }
   }
 
   const rule = LIMITS[path] ?? DEFAULT_LIMIT;
