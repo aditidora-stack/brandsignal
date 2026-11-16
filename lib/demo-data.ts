@@ -11,7 +11,7 @@ import type {
 /*
  * Demo dataset.
  *
- * The tracked brand is a fictional healthy meal-kit subscription ("Forkful")
+ * The tracked brand is a fictional luxury skincare house ("Maison Lumière")
  * with fictional competitors. This keeps the demo neutral and avoids implying
  * anything about real companies.
  */
@@ -47,28 +47,28 @@ function seedScore(
 }
 
 /* ─────────────────────────  Brand + prompts ───────────────────────── */
-const BRAND_NAME = "Forkful";
+const BRAND_NAME = "Maison Lumière";
 
 const PROMPTS: TaggedPrompt[] = [
   {
-    text: "What are the best healthy meal kit delivery services for busy families in 2026?",
-    tags: ["comparison", "families"],
+    text: "What are the best luxury moisturizers for sensitive skin in 2026?",
+    tags: ["discover", "sensitive-skin"],
   },
   {
-    text: "How can a meal kit subscription help reduce food waste at home?",
-    tags: ["sustainability"],
+    text: "Is luxury skincare worth the price compared to dermatologist brands?",
+    tags: ["consider", "price"],
   },
   {
-    text: "Compare the top meal kit services for couples who want quick weeknight dinners.",
-    tags: ["comparison", "couples"],
+    text: "Compare the top luxury serums for fine lines and dull skin.",
+    tags: ["compare", "anti-aging"],
   },
   {
-    text: "What should I look for when choosing a healthy meal kit subscription?",
-    tags: ["education"],
+    text: "What should I look for when buying a luxury skincare gift?",
+    tags: ["discover", "gifting"],
   },
   {
-    text: "Which meal kit services offer the best vegetarian and plant-based options?",
-    tags: ["vegetarian", "options"],
+    text: "Which luxury skincare brands are the most sustainable and refillable?",
+    tags: ["compare", "sustainability"],
   },
 ];
 
@@ -81,126 +81,119 @@ const PROVIDERS: Provider[] = [
 
 const SAMPLE_SOURCES: Record<string, string[]> = {
   "chatgpt-0": [
-    "https://www.nytimes.com/wirecutter/reviews/best-meal-kit-delivery-services/",
-    "https://www.goodhousekeeping.com/food-products/meal-kit-reviews/",
-    "https://forkful.com/plans",
-    "https://greenplate.com/menu",
-    "https://www.cnet.com/health/nutrition/best-meal-kit-delivery/",
+    "https://www.luxebeautyreview.com/best-luxury-moisturizers",
+    "https://www.skinjournal-sample.com/sensitive-skin-guide",
+    "https://maisonlumiere.com/cream",
+    "https://velora.com/barrier-cream",
   ],
   "perplexity-0": [
-    "https://www.nytimes.com/wirecutter/reviews/best-meal-kit-delivery-services/",
-    "https://www.goodhousekeeping.com/food-products/meal-kit-reviews/",
-    "https://forkful.com/",
-    "https://www.tomsguide.com/best-picks/best-meal-kit-delivery",
+    "https://www.luxebeautyreview.com/best-luxury-moisturizers",
+    "https://maisonlumiere.com/",
+    "https://www.reddit.com/r/SkincareAddiction/",
   ],
   "gemini-0": [
-    "https://www.goodhousekeeping.com/food-products/meal-kit-reviews/",
-    "https://forkful.com/plans",
-    "https://greenplate.com/menu",
+    "https://www.skinjournal-sample.com/sensitive-skin-guide",
+    "https://maisonlumiere.com/cream",
+    "https://velora.com/barrier-cream",
   ],
   "chatgpt-1": [
-    "https://www.seriouseats.com/how-meal-kits-reduce-food-waste",
-    "https://forkful.com/sustainability",
-    "https://www.epa.gov/recycle/reducing-wasted-food-home",
+    "https://www.skinjournal-sample.com/luxury-vs-derm",
+    "https://maisonlumiere.com/ingredients",
+    "https://dewlab.com/science",
   ],
   "perplexity-1": [
-    "https://www.seriouseats.com/how-meal-kits-reduce-food-waste",
-    "https://forkful.com/sustainability",
-    "https://greenplate.com/sustainability",
+    "https://www.skinjournal-sample.com/luxury-vs-derm",
+    "https://dewlab.com/science",
+    "https://www.reddit.com/r/SkincareAddiction/",
   ],
   "chatgpt-2": [
-    "https://www.nytimes.com/wirecutter/reviews/best-meal-kit-delivery-services/",
-    "https://forkful.com/express",
-    "https://saveurkits.com/",
-    "https://hearthbox.com/plans",
+    "https://www.luxebeautyreview.com/best-serums",
+    "https://maisonlumiere.com/serum",
+    "https://ateliernoir.com/elixir",
+    "https://velora.com/serum",
   ],
   "perplexity-2": [
-    "https://www.tomsguide.com/best-picks/best-meal-kit-delivery",
-    "https://forkful.com/express",
-    "https://saveurkits.com/",
+    "https://www.luxebeautyreview.com/best-serums",
+    "https://maisonlumiere.com/serum",
+    "https://ateliernoir.com/elixir",
   ],
   "chatgpt-3": [
-    "https://www.goodhousekeeping.com/food-products/meal-kit-reviews/",
-    "https://www.consumerreports.org/meal-kit-delivery/",
-    "https://forkful.com/how-it-works",
+    "https://www.giftguide-sample.com/luxury-beauty-gifts",
+    "https://maisonlumiere.com/gift-sets",
   ],
   "chatgpt-4": [
-    "https://forkful.com/plant-based",
-    "https://greenplate.com/menu",
-    "https://saveurkits.com/vegetarian",
-    "https://www.goodhousekeeping.com/food-products/meal-kit-reviews/",
+    "https://maisonlumiere.com/refills",
+    "https://velora.com/sustainability",
+    "https://www.luxebeautyreview.com/sustainable-luxury-skincare",
   ],
   "perplexity-4": [
-    "https://forkful.com/plant-based",
-    "https://greenplate.com/menu",
-    "https://www.cnet.com/health/nutrition/best-meal-kit-delivery/",
+    "https://maisonlumiere.com/refills",
+    "https://velora.com/sustainability",
   ],
   "google_ai-4": [
-    "https://forkful.com/plant-based",
-    "https://greenplate.com/menu",
-    "https://saveurkits.com/vegetarian",
+    "https://maisonlumiere.com/refills",
+    "https://velora.com/sustainability",
+    "https://ateliernoir.com/",
   ],
 };
 
 const ANSWER_TEMPLATES: Record<string, string> = {
-  "chatgpt-0": `Here are some of the best healthy meal-kit delivery services for busy families in 2026:
+  "chatgpt-0": `Here are some of the best luxury moisturizers for sensitive skin in 2026:
 
-**1. Forkful** — Chef-designed, nutritionist-approved menus with family-size portions and 15-minute "express" recipes. Flexible weekly plans and mostly recyclable packaging make it a strong pick for busy households.
+**1. Maison Lumière Barrier Cream** — Fragrance-free, ceramide-rich formula with a refillable glass jar. Often praised for calming redness without feeling heavy.
 
-**2. GreenPlate** — Certified-organic kits with a large rotating menu. Good for families who prioritise organic produce.
+**2. Velora Barrier Cream** — Clean-beauty positioning with a short ingredient list. Good for very reactive skin.
 
-**3. Hearthbox** — Budget-friendly, kid-approved comfort meals at a low price per serving.
+**3. Dewlab Repair Moisturizer** — Dermatologist-developed and far cheaper, a strong value alternative.
 
-**4. Saveur Kits** — Gourmet, restaurant-style recipes for families who enjoy a more involved cook.
+**4. Atelier Noir La Crème** — Ultra-rich and indulgent, but contains fragrance, so patch-test first.
 
-Key things to weigh: portion sizes, recipe time, dietary filters, and packaging waste.`,
+Key things to weigh: fragrance-free formulas, barrier ingredients (ceramides, niacinamide), and texture.`,
 
-  "perplexity-0": `Based on recent testing, the top healthy meal kits for families in 2026 include:
+  "perplexity-0": `Based on recent reviews, top luxury moisturizers for sensitive skin include:
 
-1. **Forkful** — Nutritionist-designed menus, family portions, and quick 15–30 minute recipes. Praised for fresh ingredients and recyclable packaging.
-2. **GreenPlate** — Certified-organic ingredients with a wide weekly menu.
-3. **Hearthbox** — Affordable, kid-friendly comfort meals.
+1. **Maison Lumière Barrier Cream** — Fragrance-free with ceramides; reviewers note fast relief for redness.
+2. **Velora Barrier Cream** — Minimal "clean" formula.
+3. **Dewlab Repair Moisturizer** — A lower-priced, dermatologist-backed pick.
 
-Reviewers on Wirecutter and Good Housekeeping highlight recipe variety, ingredient freshness, and how easily each kit fits into a busy week.`,
+Reddit's skincare communities often recommend patch-testing even fragrance-free products.`,
 
-  "gemini-0": `Several meal-kit services stand out for busy families this year:
+  "gemini-0": `Luxury moisturizers that suit sensitive skin this year:
 
-• **Forkful** — Healthy, fast recipes with clear nutrition labels and family-size portions
-• **GreenPlate** — Organic produce and a seasonal rotating menu
-• **Hearthbox** — Low cost and kid-approved comfort food
+• **Maison Lumière Barrier Cream** — Fragrance-free, ceramide-based, refillable
+• **Velora Barrier Cream** — Short, clean ingredient list
+• **Dewlab Repair Moisturizer** — Strong value, dermatologist-developed
 
-Families should compare cook time, dietary options, and packaging when choosing.`,
+Look for fragrance-free labels and barrier-repair ingredients.`,
 
-  "chatgpt-1": `Meal-kit subscriptions cut household food waste in a few concrete ways:
+  "chatgpt-1": `Whether luxury skincare is worth it depends on what you're paying for:
 
-**Pre-portioned ingredients** — You get exactly what a recipe needs, so half-used produce doesn't rot in the fridge.
+**Formula** — Many key actives (retinoids, niacinamide, ceramides) work the same at any price. Dermatologist brands like Dewlab often match luxury formulas on results.
 
-**Planned menus** — Choosing meals up front reduces impulse grocery buys that go uneaten.
+**Experience** — Luxury brands such as Maison Lumière charge more for texture, packaging, scent-free elegance and refill programs.
 
-**Right-sized proteins** — Services like Forkful portion proteins per serving, avoiding the "bought a big pack, used half" problem.
+**Where luxury can win** — Elegant textures people actually use daily, and refillable packaging that lowers long-term waste.
 
-**Recyclable packaging** — Forkful and GreenPlate use mostly recyclable or compostable packaging, though insulation liners vary.
+Bottom line: buy dermatologist brands for actives, and luxury for the routine you'll stick to.`,
 
-To maximise the benefit, pick a plan sized to how many nights you actually cook.`,
+  "chatgpt-2": `Here's how leading luxury serums compare for fine lines and dullness:
 
-  "chatgpt-2": `Here's how the leading meal kits compare for couples who want fast weeknight dinners:
+| Serum | Best for | Key active | Price |
+|-------|----------|------------|-------|
+| Maison Lumière Renewal Serum | Fine lines + glow | Encapsulated retinal | $$$ |
+| Velora Bright Serum | Dullness | Vitamin C | $$ |
+| Atelier Noir Elixir | Indulgence | Peptides + botanical oils | $$$$ |
+| Dewlab Retinal 0.1% | Value | Retinal | $ |
 
-| Service | Best for | Avg cook time | Price/serving |
-|---------|----------|---------------|---------------|
-| Forkful | Healthy & quick | 15–25 min | $$ |
-| GreenPlate | Organic | 30–40 min | $$$ |
-| Hearthbox | Budget comfort | 25–35 min | $ |
-| Saveur Kits | Gourmet | 40–50 min | $$$ |
+**Maison Lumière** is the strongest all-rounder for both concerns. **Dewlab** gives similar results at a lower price.`,
 
-**Forkful** is the strongest fit for couples short on time, with 15-minute express recipes and two-person portions. **Saveur Kits** suits couples who enjoy a longer, more involved cook.`,
+  "chatgpt-4": `The luxury skincare brands with the strongest sustainability and refill programs include:
 
-  "chatgpt-4": `The meal-kit services with the strongest vegetarian and plant-based ranges in 2026 include:
+1. **Maison Lumière** — Refill pods for its cream and serum, plus recyclable glass jars.
+2. **Velora** — Clean formulas and a take-back program for empties.
+3. **Atelier Noir** — Beautiful packaging, but limited refill options.
 
-1. **Forkful** — A dedicated plant-based plan with high-protein vegetarian recipes and clear nutrition labels.
-2. **GreenPlate** — Organic veggie boxes built around seasonal produce.
-3. **Saveur Kits** — Elevated vegetarian recipes for a more gourmet experience.
-
-Most households mix vegetarian and omnivore meals, so flexible per-meal selection (which Forkful and GreenPlate both offer) often matters more than a fully veg-only plan.`,
+Refill programs only reduce waste if you actually use them, so check whether refills ship in your country.`,
 };
 
 // US-heavy spread so the "Visibility by country" panel is populated in demo mode.
@@ -216,17 +209,17 @@ function buildRunBase(prompt: string, provider: Provider, batch: number) {
 
 /** Answers used when the brand is NOT present — competitors are cited instead. */
 const COMPETITOR_ANSWERS: string[] = [
-  `The best-reviewed meal-kit services right now are GreenPlate, Hearthbox, and Saveur Kits. GreenPlate leads on organic ingredients, Hearthbox is the budget pick for families, and Saveur Kits focuses on gourmet, restaurant-style recipes. Most write-ups draw on Wirecutter and Good Housekeeping testing.`,
-  `For families comparing meal kits, GreenPlate and Hearthbox come up most often — GreenPlate for organic produce and Hearthbox for low cost and kid-friendly menus. Saveur Kits is the choice for more adventurous home cooks.`,
-  `Among meal-kit subscriptions, GreenPlate, Hearthbox, and Saveur Kits are frequently recommended. Buyers weigh ingredient quality, price per serving, and recipe time, with review sites like CNET and Serious Eats as common references.`,
+  `The most-recommended luxury skincare names right now are Velora, Atelier Noir and Dewlab. Velora leads on clean formulas, Atelier Noir on indulgent textures, and Dewlab is the value pick that many reviewers compare against luxury brands.`,
+  `For sensitive or reactive skin, Velora and Dewlab come up most often — Velora for short ingredient lists and Dewlab for dermatologist-developed formulas. Atelier Noir is the choice for shoppers who want a luxury ritual.`,
+  `Among premium skincare brands, Velora, Atelier Noir and Dewlab are frequently recommended. Shoppers weigh ingredients, fragrance, price per ounce and packaging, with beauty editors and Reddit communities as common references.`,
 ];
 
 const COMPETITOR_SOURCES: string[] = [
-  "https://www.nytimes.com/wirecutter/reviews/best-meal-kit-delivery-services/",
-  "https://www.goodhousekeeping.com/food-products/meal-kit-reviews/",
-  "https://greenplate.com/menu",
-  "https://hearthbox.com/plans",
-  "https://www.cnet.com/health/nutrition/best-meal-kit-delivery/",
+  "https://www.luxebeautyreview.com/best-luxury-moisturizers",
+  "https://www.skinjournal-sample.com/sensitive-skin-guide",
+  "https://velora.com/barrier-cream",
+  "https://dewlab.com/science",
+  "https://ateliernoir.com/",
 ];
 
 /**
@@ -269,23 +262,23 @@ function buildRun(
       visibilityScore: Math.min(40, 5 + (jitter % 25)),
       sentiment: "not-mentioned",
       brandMentions: [],
-      competitorMentions: ["GreenPlate", "Hearthbox", "Saveur Kits"],
+      competitorMentions: ["Velora", "Dewlab", "Atelier Noir"],
     };
   }
 
   // Brand mentioned — use a rich template when available, else a default.
   const sources = SAMPLE_SOURCES[key] ?? [
-    "https://www.nytimes.com/wirecutter/reviews/best-meal-kit-delivery-services/",
-    "https://forkful.com/",
-    "https://greenplate.com/menu",
+    "https://www.luxebeautyreview.com/best-luxury-moisturizers",
+    "https://maisonlumiere.com/",
+    "https://velora.com/barrier-cream",
   ];
   const answer =
     ANSWER_TEMPLATES[key] ??
-    `For "${prompt}", reviewers point to a mix of services. ${BRAND_NAME} stands out for nutritionist-designed menus, family-size portions, and quick recipes, while GreenPlate and Hearthbox are common alternatives. Fresh ingredients, dietary flexibility, and packaging waste are the main things buyers compare.`;
+    `For "${prompt}", beauty editors point to a mix of brands. ${BRAND_NAME} stands out for fragrance-free, barrier-friendly formulas and refillable packaging, while Velora and Dewlab are common alternatives. Ingredients, texture, fragrance and price per ounce are what shoppers compare most.`;
 
   const score = Math.min(100, 58 + jitter + batch * 2);
   const isNegative = seedScore(13, pIdx, promptIdx, batch) % 100 < 9;
-  const hasCompetitor = /greenplate|hearthbox|saveur/i.test(answer);
+  const hasCompetitor = /velora|dewlab|atelier noir/i.test(answer);
 
   return {
     ...base,
@@ -296,9 +289,9 @@ function buildRun(
     brandMentions: [BRAND_NAME],
     competitorMentions: hasCompetitor
       ? [
-          ...(/greenplate/i.test(answer) ? ["GreenPlate"] : []),
-          ...(/hearthbox/i.test(answer) ? ["Hearthbox"] : []),
-          ...(/saveur/i.test(answer) ? ["Saveur Kits"] : []),
+          ...(/velora/i.test(answer) ? ["Velora"] : []),
+          ...(/dewlab/i.test(answer) ? ["Dewlab"] : []),
+          ...(/atelier noir/i.test(answer) ? ["Atelier Noir"] : []),
         ]
       : [],
   };
@@ -324,103 +317,103 @@ function generateRuns(): ScrapeRun[] {
 /* ─────────────────────────  Battlecards ───────────────────────── */
 const demoBattlecards: Battlecard[] = [
   {
-    competitor: "GreenPlate",
+    competitor: "Velora",
     sentiment: "neutral",
     summary:
-      "Organic-first meal kit with a large rotating menu and strong sustainability messaging. Higher price per serving and longer cook times than Forkful.",
+      "Clean-beauty skincare brand with short ingredient lists and strong sustainability messaging. Loved by sensitive-skin shoppers; less of a luxury experience than Maison Lumière.",
     sections: [
       {
         heading: "Strengths",
         points: [
-          "Certified-organic ingredients",
-          "Wide seasonal menu",
+          "Short, clean ingredient lists",
+          "Trusted by sensitive-skin shoppers",
           "Strong sustainability story",
-          "Good Wirecutter coverage",
+          "Good beauty-editor coverage",
         ],
       },
       {
         heading: "Weaknesses",
         points: [
-          "Higher price per serving",
-          "Longer average cook time",
-          "Fewer quick-recipe options",
-          "No express plan",
+          "Fewer hero products",
+          "Less luxurious textures",
+          "Limited anti-aging range",
+          "No refill pods",
         ],
       },
       {
         heading: "AI Visibility",
         points: [
-          "Frequently cited for 'organic meal kit' queries",
-          "Strong on Good Housekeeping",
-          "Wins some Gemini citations via long-form blog",
+          "Frequently cited for 'clean skincare' queries",
+          "Strong on sensitive-skin prompts",
+          "Wins Gemini citations via its ingredient glossary",
         ],
       },
     ],
   },
   {
-    competitor: "Hearthbox",
+    competitor: "Dewlab",
     sentiment: "neutral",
     summary:
-      "Budget, family-focused comfort-food kit with kid-friendly menus. Competes on price; less emphasis on nutrition and freshness than Forkful.",
+      "Dermatologist-developed skincare at drugstore prices. Competes on value and clinical claims; little luxury appeal compared with Maison Lumière.",
     sections: [
       {
         heading: "Strengths",
         points: [
-          "Lowest price per serving",
-          "Kid-approved comfort menus",
-          "Simple, fast recipes",
-          "Wide availability",
+          "Lowest price per ounce",
+          "Dermatologist-developed",
+          "Clinically tested actives",
+          "Sold everywhere",
         ],
       },
       {
         heading: "Weaknesses",
         points: [
-          "Less emphasis on nutrition",
-          "Smaller dietary range",
-          "More packaging waste",
-          "Limited plant-based options",
+          "Plain packaging",
+          "No gifting appeal",
+          "More plastic packaging",
+          "Weak on luxury prompts",
         ],
       },
       {
         heading: "AI Visibility",
         points: [
-          "Cited for 'cheapest meal kit' queries",
+          "Cited for 'is luxury skincare worth it' queries",
           "Active on Reddit threads",
-          "Weaker on health-focused prompts",
+          "Rarely surfaced for gifting prompts",
         ],
       },
     ],
   },
   {
-    competitor: "Saveur Kits",
+    competitor: "Atelier Noir",
     sentiment: "neutral",
     summary:
-      "Gourmet, restaurant-style meal kit for adventurous home cooks. Premium positioning; longer prep makes it a weak fit for the busy-family use case Forkful targets.",
+      "Ultra-luxury skincare house built on indulgent textures and iconic packaging. Highest price point; fragrance makes it a weak fit for the sensitive-skin shopper Maison Lumière targets.",
     sections: [
       {
         heading: "Strengths",
         points: [
-          "Elevated, restaurant-style recipes",
-          "Premium ingredients",
-          "Strong vegetarian gourmet range",
-          "Loyal foodie audience",
+          "Iconic packaging",
+          "Rich, indulgent textures",
+          "Strong gifting appeal",
+          "Loyal luxury audience",
         ],
       },
       {
         heading: "Weaknesses",
         points: [
-          "Long cook times (40–50 min)",
+          "Contains fragrance",
           "Highest price point",
-          "Not built for quick weeknights",
+          "No refill program",
           "Niche appeal",
         ],
       },
       {
         heading: "AI Visibility",
         points: [
-          "Cited for 'gourmet meal kit' queries",
-          "Mentioned in foodie roundups",
-          "Rarely surfaced for 'quick' or 'budget' prompts",
+          "Cited for 'luxury gift' queries",
+          "Mentioned in luxury roundups",
+          "Rarely surfaced for 'sensitive skin' or 'value' prompts",
         ],
       },
     ],
@@ -429,7 +422,7 @@ const demoBattlecards: Battlecard[] = [
 
 /* ─────────────────────────  Audit Report ───────────────────────── */
 const demoAuditReport: AuditReport = {
-  url: "https://forkful.com",
+  url: "https://maisonlumiere.com",
   score: 78,
   checks: [
     {
@@ -455,7 +448,7 @@ const demoAuditReport: AuditReport = {
       pass: true,
       value: "5 types",
       detail:
-        "Organization, WebSite, FAQPage, Recipe, Product schemas detected",
+        "Organization, WebSite, FAQPage, Product, Review schemas detected",
     },
     {
       id: "faq-schema",
@@ -487,7 +480,7 @@ const demoAuditReport: AuditReport = {
       category: "content",
       pass: false,
       value: "Missing on 2 pages",
-      detail: "/pricing and /express lack meta descriptions",
+      detail: "/refills and /gift-sets lack meta descriptions",
     },
     {
       id: "page-speed",
@@ -541,7 +534,7 @@ const demoDriftAlerts: DriftAlert[] = [
   {
     id: "drift-demo-1",
     prompt:
-      "What are the best healthy meal kit delivery services for busy families in 2026?",
+      "What are the best luxury moisturizers for sensitive skin in 2026?",
     provider: "chatgpt",
     oldScore: 62,
     newScore: 81,
@@ -552,7 +545,7 @@ const demoDriftAlerts: DriftAlert[] = [
   {
     id: "drift-demo-2",
     prompt:
-      "Compare the top meal kit services for couples who want quick weeknight dinners.",
+      "Compare the top luxury serums for fine lines and dull skin.",
     provider: "perplexity",
     oldScore: 45,
     newScore: 31,
@@ -565,14 +558,14 @@ const demoDriftAlerts: DriftAlert[] = [
 /* ─────────────────────────  Full State ───────────────────────── */
 export const DEMO_STATE: AppState = {
   brand: {
-    brandName: "Forkful",
-    brandAliases: "Forkful Kitchen, Forkful Meals",
-    websites: ["https://forkful.com", "https://blog.forkful.com"],
-    industry: "Meal-kit delivery / DTC food",
+    brandName: "Maison Lumière",
+    brandAliases: "Maison Lumiere, Lumière",
+    websites: ["https://maisonlumiere.com"],
+    industry: "Luxury skincare (sample brand)",
     keywords:
-      "meal kit delivery, healthy meal subscription, dinner kits, plant-based meals, food waste",
+      "luxury moisturizer, sensitive skin, anti-aging serum, refillable skincare, skincare gifts",
     description:
-      "Chef-designed healthy meal kits delivered weekly, with flexible plans, family-size portions, and minimal food waste.",
+      "A fictional luxury skincare house used as sample data: fragrance-free, barrier-friendly formulas in refillable packaging.",
   },
   provider: "chatgpt",
   activeProviders: [
@@ -583,48 +576,48 @@ export const DEMO_STATE: AppState = {
   ],
   country: "US",
   prompt:
-    "What are the best healthy meal kit delivery services for busy families in 2026?",
+    "What are the best luxury moisturizers for sensitive skin in 2026?",
   customPrompts: PROMPTS,
   personas:
-    "Busy Parent\nHealth-Conscious Professional\nCouple Cooking at Home\nVegetarian Foodie\nMeal-Prep Beginner",
+    "Sensitive-Skin Shopper\nLuxury Gift Buyer\nSkintellectual\nClean-Beauty Fan\nFirst-Time Luxury Buyer",
   fanoutPrompts: [
-    "[Busy Parent] What meal kit is best for getting healthy dinners on the table fast for a family of four?",
-    "[Health-Conscious Professional] Which meal kit has the best macros and clean ingredients for weeknight cooking?",
-    "[Couple Cooking at Home] What's the best two-person meal kit for quick weeknight dinners?",
-    "[Vegetarian Foodie] Which meal kit has the most interesting vegetarian and plant-based recipes?",
-    "[Meal-Prep Beginner] What's the easiest meal kit to start with if I barely cook?",
+    "[Sensitive-Skin Shopper] Which luxury moisturizer won't irritate my rosacea-prone skin?",
+    "[Luxury Gift Buyer] What is the best luxury skincare gift set under $200?",
+    "[Skintellectual] Which luxury serum has the most proven active ingredients?",
+    "[Clean-Beauty Fan] Which luxury skincare brands are clean and refillable?",
+    "[First-Time Luxury Buyer] Which luxury skincare product is worth buying first?",
   ],
-  niche: "healthy meal-kit delivery for busy households",
+  niche: "luxury skincare for sensitive skin",
   nicheQueries: [
-    "best meal kit for families 2026",
-    "healthiest meal kit subscriptions",
-    "meal kits that reduce food waste",
-    "best vegetarian meal kit delivery",
-    "cheapest meal kit for two people",
+    "best luxury moisturizer for sensitive skin",
+    "is luxury skincare worth it",
+    "refillable luxury skincare brands",
+    "best luxury serum for fine lines",
+    "luxury skincare gift sets",
   ],
   cronExpr: "0 */6 * * *",
   githubWorkflow:
-    "name: forkful-visibility\non:\n  schedule:\n    - cron: '0 */6 * * *'\njobs:\n  track:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci && npm run test:scraper",
+    "name: brandsignal-visibility\non:\n  schedule:\n    - cron: '0 */6 * * *'\njobs:\n  track:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci && npm run test:scraper",
   competitors: [
     {
-      name: "greenplate.com",
-      aliases: ["GreenPlate"],
-      websites: ["https://greenplate.com"],
+      name: "velora.com",
+      aliases: ["Velora"],
+      websites: ["https://velora.com"],
     },
     {
-      name: "hearthbox.com",
-      aliases: ["Hearthbox"],
-      websites: ["https://hearthbox.com"],
+      name: "dewlab.com",
+      aliases: ["Dewlab"],
+      websites: ["https://dewlab.com"],
     },
     {
-      name: "saveurkits.com",
-      aliases: ["Saveur Kits", "Saveur"],
-      websites: ["https://saveurkits.com"],
+      name: "ateliernoir.com",
+      aliases: ["Atelier Noir"],
+      websites: ["https://ateliernoir.com"],
     },
   ],
   battlecards: demoBattlecards,
   runs: generateRuns(),
-  auditUrl: "https://forkful.com",
+  auditUrl: "https://maisonlumiere.com",
   auditReport: demoAuditReport,
   scheduleEnabled: true,
   scheduleIntervalMs: 21600000,

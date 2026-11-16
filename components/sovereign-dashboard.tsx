@@ -1629,7 +1629,7 @@ ${exampleJson}`,
                 <div className="truncate text-sm font-semibold text-th-text">
                   {state.brand.brandName || "AEO Tracker"}
                 </div>
-                <div className="text-xs text-th-text-muted">Demo workspace</div>
+                <div className="text-xs text-th-text-muted">Sample workspace</div>
               </div>
             </div>
           ) : (
@@ -1762,55 +1762,19 @@ ${exampleJson}`,
           })}
         </nav>
 
-        {/* Bright Data CTA */}
+        {/* BrandSignal card */}
         <div className="border-t border-th-border px-3 py-3">
-          <a
-            href="https://brightdata.com/?utm_source=geo-tracker-os"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center gap-2 rounded-xl bg-gradient-to-br from-[#1a6dff] via-[#3b82f6] to-[#6366f1] px-4 py-4 shadow-lg transition-all hover:shadow-xl hover:brightness-110"
-          >
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-              </svg>
+          <div className="flex flex-col items-center gap-1.5 rounded-xl bg-gradient-to-br from-[#2a1f1d] via-[#6b2d40] to-[#a8506b] px-4 py-4 text-center shadow-lg">
+            <div className="font-serif text-base tracking-wide text-white">
+              BrandSignal
             </div>
-            <div className="text-center">
-              <div className="text-sm font-bold text-white">
-                Powered by Bright Data
-              </div>
-              <div className="mt-0.5 text-xs text-white/70">
-                Web data infrastructure for AI
-              </div>
+            <div className="text-xs leading-snug text-white/75">
+              How AI recommends beauty, fashion &amp; luxury brands
             </div>
-            <div className="flex items-center gap-1.5 rounded-lg bg-white/15 px-3 py-1.5 text-xs font-medium text-white transition-colors group-hover:bg-white/25">
-              Learn more
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
+            <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-white/50">
+              AI answers via Bright Data
             </div>
-          </a>
+          </div>
         </div>
 
         {/* Footer info */}
@@ -1823,13 +1787,25 @@ ${exampleJson}`,
           <div className="mt-1">
             Built by{" "}
             <a
-              href="https://www.linkedin.com/in/daniel-shashko/"
+              href="https://github.com/aditidora-stack/brandsignal"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-th-text-accent hover:underline"
             >
-              Daniel Shashko
+              Aditi Dora
             </a>
+            <div className="mt-0.5 text-[10px]">
+              Based on the open-source{" "}
+              <a
+                href="https://github.com/danishashko/geo-aeo-tracker"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                GEO/AEO Tracker
+              </a>{" "}
+              (MIT)
+            </div>
           </div>
         </div>
       </aside>
@@ -1842,8 +1818,8 @@ ${exampleJson}`,
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-th-accent" />
             <span>
               {demoReason === "no-key"
-                ? "Demo data. Changes are not saved. Add BRIGHT_DATA_KEY to your environment to track live AI engines"
-                : "Demo data. Changes are not saved and live API calls are off"}
+                ? "Sample data with a fictional brand (Maison Lumière). Live tracking of real brands turns on once the data key is added"
+                : "Sample data with a fictional brand. Changes are not saved"}
             </span>
           </div>
         )}

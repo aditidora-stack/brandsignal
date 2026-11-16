@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { siteOrigin } from "@/lib/agent-discovery";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   display: "swap",
 });
@@ -16,18 +22,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const description =
-  "Open-source, self-hosted dashboard that tracks how ChatGPT, Perplexity, Gemini and Google AI Mode mention your brand. Bring your own API keys and keep your data in your browser.";
+  "BrandSignal shows how ChatGPT, Perplexity, Gemini and Google AI Mode recommend beauty, fashion and luxury brands: who gets mentioned, who gets cited, and why.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin()),
-  title: "GEO/AEO Tracker: open-source AI visibility tracker",
+  title: "BrandSignal: AI visibility for beauty, fashion & luxury brands",
   description,
   openGraph: {
-    title: "GEO/AEO Tracker: open-source AI visibility tracker",
+    title: "BrandSignal: AI visibility for beauty, fashion & luxury brands",
     description,
     type: "website",
     url: "/",
-    siteName: "GEO/AEO Tracker",
+    siteName: "BrandSignal",
   },
 };
 
@@ -46,7 +52,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${playfair.variable} antialiased`}
       >
         {children}
       </body>

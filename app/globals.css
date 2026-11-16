@@ -2,41 +2,41 @@
 
 /* ═══════════════════════════════════════════════════
    LIGHT THEME (default)
-   Inspired by Promptwatch — clean, professional
+   BrandSignal — ivory + rose, luxury editorial
    ═══════════════════════════════════════════════════ */
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #faf7f2;
+  --foreground: #2a1f1d;
 
   /* Surfaces */
-  --th-bg: #f1f5f9;
+  --th-bg: #f4eee6;
   --th-card: #ffffff;
-  --th-card-alt: #f8fafc;
-  --th-card-hover: #f1f5f9;
+  --th-card-alt: #faf7f2;
+  --th-card-hover: #f4eee6;
   --th-sidebar: #ffffff;
-  --th-inset: #f1f5f9;
+  --th-inset: #f4eee6;
 
   /* Text */
-  --th-text: #0f172a;
-  --th-text-secondary: #475569;
-  --th-text-muted: #94a3b8;
-  --th-text-accent: #2563eb;
+  --th-text: #2a1f1d;
+  --th-text-secondary: #6b5a55;
+  --th-text-muted: #a8988f;
+  --th-text-accent: #8e3b55;
   --th-text-inverse: #ffffff;
 
   /* Borders */
-  --th-border: #e2e8f0;
-  --th-border-subtle: #f1f5f9;
-  --th-ring: rgba(59, 130, 246, 0.25);
+  --th-border: #ebe2d8;
+  --th-border-subtle: #f4eee6;
+  --th-ring: rgba(168, 80, 107, 0.25);
 
   /* Accent */
-  --th-accent: #3b82f6;
-  --th-accent-hover: #2563eb;
-  --th-accent-soft: rgba(59, 130, 246, 0.08);
-  --th-accent-muted: rgba(59, 130, 246, 0.15);
+  --th-accent: #a8506b;
+  --th-accent-hover: #8e3b55;
+  --th-accent-soft: rgba(168, 80, 107, 0.08);
+  --th-accent-muted: rgba(168, 80, 107, 0.15);
 
   /* Brand highlight */
-  --th-brand-bg: rgba(59, 130, 246, 0.1);
-  --th-brand-text: #2563eb;
+  --th-brand-bg: rgba(168, 80, 107, 0.1);
+  --th-brand-text: #8e3b55;
   --th-competitor-bg: rgba(234, 88, 12, 0.1);
   --th-competitor-text: #ea580c;
 
@@ -53,16 +53,16 @@
   --th-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.08);
 
   /* Borders (extra) */
-  --th-border-hover: #cbd5e1;
+  --th-border-hover: #d9cbbd;
 
   /* Chart */
-  --th-chart-line: #3b82f6;
+  --th-chart-line: #a8506b;
   --th-chart-grid: rgba(0, 0, 0, 0.06);
-  --th-chart-dot: #2563eb;
-  --th-chart-axis: #64748b;
+  --th-chart-dot: #8e3b55;
+  --th-chart-axis: #8a7a72;
 
   /* Score ring bg */
-  --th-score-ring-bg: #e2e8f0;
+  --th-score-ring-bg: #ebe2d8;
 
   /* Scrollbar */
   --th-scrollbar: rgba(148, 163, 184, 0.3);
@@ -73,33 +73,33 @@
    Refined navy palette — no neon, softer blues
    ═══════════════════════════════════════════════════ */
 .dark {
-  --background: #0b1121;
-  --foreground: #e2e8f0;
+  --background: #120e0d;
+  --foreground: #f1e9e4;
 
-  --th-bg: #0b1121;
-  --th-card: #111827;
-  --th-card-alt: #0f172a;
-  --th-card-hover: #1e293b;
-  --th-sidebar: #0f172a;
-  --th-inset: #0d1424;
+  --th-bg: #120e0d;
+  --th-card: #1b1615;
+  --th-card-alt: #161211;
+  --th-card-hover: #2a2220;
+  --th-sidebar: #161211;
+  --th-inset: #140f0e;
 
-  --th-text: #e2e8f0;
-  --th-text-secondary: #94a3b8;
-  --th-text-muted: #64748b;
-  --th-text-accent: #60a5fa;
-  --th-text-inverse: #0f172a;
+  --th-text: #f1e9e4;
+  --th-text-secondary: #b5a59d;
+  --th-text-muted: #857670;
+  --th-text-accent: #e8a3b5;
+  --th-text-inverse: #161211;
 
-  --th-border: #1e293b;
-  --th-border-subtle: rgba(30, 41, 59, 0.6);
-  --th-ring: rgba(96, 165, 250, 0.25);
+  --th-border: #2a2220;
+  --th-border-subtle: rgba(42, 34, 32, 0.6);
+  --th-ring: rgba(232, 163, 181, 0.25);
 
-  --th-accent: #3b82f6;
-  --th-accent-hover: #60a5fa;
-  --th-accent-soft: rgba(59, 130, 246, 0.12);
-  --th-accent-muted: rgba(59, 130, 246, 0.2);
+  --th-accent: #c76b85;
+  --th-accent-hover: #e8a3b5;
+  --th-accent-soft: rgba(199, 107, 133, 0.12);
+  --th-accent-muted: rgba(199, 107, 133, 0.2);
 
-  --th-brand-bg: rgba(96, 165, 250, 0.12);
-  --th-brand-text: #60a5fa;
+  --th-brand-bg: rgba(232, 163, 181, 0.12);
+  --th-brand-text: #e8a3b5;
   --th-competitor-bg: rgba(251, 146, 60, 0.12);
   --th-competitor-text: #fb923c;
 
@@ -113,15 +113,15 @@
   --th-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
   --th-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.4);
 
-  --th-border-hover: #334155;
+  --th-border-hover: #3d3230;
 
-  --th-chart-line: #60a5fa;
-  --th-chart-grid: rgba(148, 163, 184, 0.1);
-  --th-chart-dot: #3b82f6;
-  --th-chart-axis: #94a3b8;
+  --th-chart-line: #e8a3b5;
+  --th-chart-grid: rgba(181, 165, 157, 0.1);
+  --th-chart-dot: #c76b85;
+  --th-chart-axis: #b5a59d;
 
-  --th-score-ring-bg: #1e293b;
-  --th-scrollbar: rgba(148, 163, 184, 0.15);
+  --th-score-ring-bg: #2a2220;
+  --th-scrollbar: rgba(181, 165, 157, 0.15);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -160,6 +160,7 @@
   --color-th-danger-soft: var(--th-danger-soft);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
+  --font-serif: var(--font-playfair), Georgia, serif;
 }
 
 /* ═══════════════════════════════════════════════════

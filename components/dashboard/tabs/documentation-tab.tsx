@@ -15,7 +15,7 @@ const sections: DocSection[] = [
     title: "Overview",
     icon: "📖",
     content: [
-      "The GEO/AEO Tracker is a local-first, open-source intelligence dashboard that monitors how your brand appears across AI models — ChatGPT, Perplexity, Gemini and Google AI Mode.",
+      "BrandSignal (built on the open-source GEO/AEO Tracker) is a local-first dashboard that monitors how beauty, fashion and luxury brands appear across AI models — ChatGPT, Perplexity, Gemini and Google AI Mode.",
       "All data is stored in your browser (localStorage + IndexedDB). Nothing leaves your machine unless you explicitly trigger a scrape or analysis via the configured API.",
       "Key capabilities: multi-model brand tracking, visibility scoring, sentiment analysis, citation discovery, competitor battlecards, AEO site audits, and automation templates.",
     ],
