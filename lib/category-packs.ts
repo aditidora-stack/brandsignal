@@ -25,6 +25,44 @@ const c = (name: string, domain: string, aliases: string[] = []): Competitor => 
 
 export const CATEGORY_PACKS: CategoryPack[] = [
   {
+    id: "high-street-fashion",
+    label: "High-street fashion",
+    blurb: "Zara vs. H&M, Mango, Uniqlo, COS, Aritzia and more",
+    brand: {
+      brandName: "Zara",
+      brandAliases: "Zara Woman, Zara Man, Inditex Zara",
+      websites: ["https://www.zara.com"],
+      industry: "Fashion / high-street apparel",
+      keywords:
+        "trendy clothes, affordable fashion, work outfits, wardrobe basics, fashion trends",
+      description:
+        "High-street fashion retailer. Tracked here as the reference brand in a high-street fashion benchmark.",
+    },
+    competitors: [
+      c("H&M", "hm.com", ["H and M", "Hennes & Mauritz"]),
+      c("Mango", "mango.com"),
+      c("Uniqlo", "uniqlo.com"),
+      c("COS", "cos.com", ["COS Stores"]),
+      c("Aritzia", "aritzia.com"),
+      c("Reformation", "thereformation.com", ["The Reformation"]),
+      c("Abercrombie & Fitch", "abercrombie.com", ["Abercrombie"]),
+    ],
+    prompts: [
+      { text: "What are the best stores for trendy clothes at affordable prices?", tags: ["discover", "trend"] },
+      { text: "Where should I shop for good-quality wardrobe basics that last?", tags: ["discover", "quality"] },
+      { text: "Which clothing brands are best for stylish work outfits on a budget?", tags: ["discover", "work"] },
+      { text: "Which fashion brands are popular with women in their twenties right now?", tags: ["discover", "audience"] },
+      { text: "Which high-street fashion brands have the best quality for the price?", tags: ["compare", "value"] },
+      { text: "Compare the most popular fast-fashion and high-street stores for style and quality.", tags: ["compare", "quality"] },
+      { text: "Which affordable fashion brands are the most sustainable and ethical?", tags: ["compare", "sustainability"] },
+      { text: "Which clothing stores have the most fashion-forward designs that look expensive?", tags: ["compare", "trend"] },
+      { text: "Where should I buy a wedding guest dress under $150?", tags: ["buy", "occasion"] },
+      { text: "Where can I build a minimalist capsule wardrobe without spending too much?", tags: ["buy", "basics"] },
+      { text: "Which store has the best winter coats under $200?", tags: ["buy", "outerwear"] },
+      { text: "Which online clothing stores have the easiest returns and best sales?", tags: ["buy", "retail"] },
+    ],
+  },
+  {
     id: "luxury-skincare",
     label: "Luxury skincare",
     blurb: "La Mer vs. Augustinus Bader, Sisley, Tatcha and more",

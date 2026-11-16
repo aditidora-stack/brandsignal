@@ -42,7 +42,7 @@ export function ProjectSettingsTab({
             One click fills the brand, 7 competitors and 12 unbranded shopping
             questions (tagged discover → compare → buy).
           </p>
-          <div className="mt-3 grid gap-2 md:grid-cols-3">
+          <div className="mt-3 grid gap-2 md:grid-cols-2 xl:grid-cols-4">
             {CATEGORY_PACKS.map((pack) => (
               <button
                 key={pack.id}
