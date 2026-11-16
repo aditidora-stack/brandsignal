@@ -5,8 +5,9 @@ import type { BrandConfig, Competitor, TaggedPrompt } from "@/components/dashboa
  * set of unbranded shopping questions tagged by buyer stage
  * (discover → compare → buy) and by shopper need.
  *
- * Questions never name a brand, so every brand competes on equal terms and the
- * answers show which brands the AI recommends on its own.
+ * Most questions never name a brand, so every brand competes on equal terms.
+ * Questions that do name one ("stores like zara…") carry the "branded" tag so
+ * results can be split into fair (unbranded) and branded views.
  */
 export type CategoryPack = {
   id: string;
@@ -27,7 +28,7 @@ export const CATEGORY_PACKS: CategoryPack[] = [
   {
     id: "high-street-fashion",
     label: "High-street fashion",
-    blurb: "Zara vs. H&M, Mango, Uniqlo, COS, Aritzia and more",
+    blurb: "Zara vs. 18 brands: H&M, Aritzia, Lulus, Princess Polly, Edikted…",
     brand: {
       brandName: "Zara",
       brandAliases: "Zara Woman, Zara Man, Inditex Zara",
@@ -45,21 +46,44 @@ export const CATEGORY_PACKS: CategoryPack[] = [
       c("COS", "cos.com", ["COS Stores"]),
       c("Aritzia", "aritzia.com"),
       c("Reformation", "thereformation.com", ["The Reformation"]),
-      c("Abercrombie & Fitch", "abercrombie.com", ["Abercrombie"]),
+      c("Abercrombie & Fitch", "abercrombie.com", ["Abercrombie", "Abercrombie and Fitch"]),
+      c("Urban Outfitters", "urbanoutfitters.com"),
+      c("American Eagle", "ae.com", ["American Eagle Outfitters"]),
+      c("Free People", "freepeople.com"),
+      c("Aerie", "aerie.com"),
+      c("For Love & Lemons", "forloveandlemons.com", ["For Love and Lemons"]),
+      c("Princess Polly", "princesspolly.com"),
+      c("Paloma Wool", "palomawool.com"),
+      c("Edikted", "edikted.com"),
+      c("Brandy Melville", "brandymelville.com", ["Brandy"]),
+      c("Garage", "garageclothing.com", ["Garage Clothing"]),
+      c("Lulus", "lulus.com", ["Lulu's"]),
     ],
     prompts: [
-      { text: "What are the best stores for trendy clothes at affordable prices?", tags: ["discover", "trend"] },
-      { text: "Where should I shop for good-quality wardrobe basics that last?", tags: ["discover", "quality"] },
-      { text: "Which clothing brands are best for stylish work outfits on a budget?", tags: ["discover", "work"] },
-      { text: "Which fashion brands are popular with women in their twenties right now?", tags: ["discover", "audience"] },
-      { text: "Which high-street fashion brands have the best quality for the price?", tags: ["compare", "value"] },
-      { text: "Compare the most popular fast-fashion and high-street stores for style and quality.", tags: ["compare", "quality"] },
-      { text: "Which affordable fashion brands are the most sustainable and ethical?", tags: ["compare", "sustainability"] },
-      { text: "Which clothing stores have the most fashion-forward designs that look expensive?", tags: ["compare", "trend"] },
-      { text: "Where should I buy a wedding guest dress under $150?", tags: ["buy", "occasion"] },
-      { text: "Where can I build a minimalist capsule wardrobe without spending too much?", tags: ["buy", "basics"] },
-      { text: "Which store has the best winter coats under $200?", tags: ["buy", "outerwear"] },
-      { text: "Which online clothing stores have the easiest returns and best sales?", tags: ["buy", "retail"] },
+      { text: "stores like zara but better quality", tags: ["compare", "branded", "quality"] },
+      { text: "is zara fast fashion", tags: ["compare", "branded", "sustainability"] },
+      { text: "zara vs h&m vs mango which is better", tags: ["compare", "branded"] },
+      { text: "where to buy cute going out tops", tags: ["buy", "going-out"] },
+      { text: "stores like princess polly but better quality", tags: ["compare", "branded", "quality"] },
+      { text: "best place to buy jeans that actually fit", tags: ["buy", "clothing-type"] },
+      { text: "aritzia worth it?", tags: ["compare", "branded", "value"] },
+      { text: "where to buy wedding guest dress under 100", tags: ["buy", "event"] },
+      { text: "affordable stores that look expensive", tags: ["discover", "value"] },
+      { text: "what clothing brands are trending with gen z right now", tags: ["discover", "trend"] },
+      { text: "brandy melville alternatives", tags: ["discover", "branded"] },
+      { text: "most sustainable cheap clothing brands", tags: ["discover", "sustainability"] },
+      { text: "where to buy a cute birthday dress", tags: ["buy", "event"] },
+      { text: "21st birthday dress ideas where to buy", tags: ["buy", "event"] },
+      { text: "where to buy white graduation dress under 100", tags: ["buy", "event"] },
+      { text: "concert outfit ideas where to shop", tags: ["buy", "event"] },
+      { text: "vacation outfits affordable stores", tags: ["buy", "event"] },
+      { text: "date night outfit where to buy", tags: ["buy", "event"] },
+      { text: "what colours are trending in fashion right now", tags: ["discover", "colour", "trend"] },
+      { text: "where to buy chocolate brown dress", tags: ["buy", "colour"] },
+      { text: "turquoise outfits where to buy", tags: ["buy", "colour"] },
+      { text: "where to buy a satin slip dress", tags: ["buy", "clothing-type"] },
+      { text: "best corset tops affordable", tags: ["buy", "clothing-type"] },
+      { text: "linen pants where to buy", tags: ["buy", "clothing-type"] },
     ],
   },
   {

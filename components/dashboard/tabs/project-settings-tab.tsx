@@ -39,8 +39,8 @@ export function ProjectSettingsTab({
         <div className="rounded-xl border border-th-border bg-th-card-alt p-4">
           <div className="font-serif text-lg text-th-text">Start from a category pack</div>
           <p className="mt-1 text-sm text-th-text-muted">
-            One click fills the brand, 7 competitors and 12 unbranded shopping
-            questions (tagged discover → compare → buy).
+            One click fills the brand, its competitors and real shopping
+            questions (tagged discover → compare → buy, plus "branded").
           </p>
           <div className="mt-3 grid gap-2 md:grid-cols-2 xl:grid-cols-4">
             {CATEGORY_PACKS.map((pack) => (
