@@ -1457,6 +1457,20 @@ ${exampleJson}`,
             }))
           }
           onReset={handleResetData}
+          onApplyPack={(pack) =>
+            setState((prev) => ({
+              ...prev,
+              brand: { ...pack.brand },
+              competitors: pack.competitors.map((comp) => ({
+                ...comp,
+                aliases: [...comp.aliases],
+                websites: [...comp.websites],
+              })),
+              customPrompts: pack.prompts.map((p) => ({ ...p, tags: [...p.tags] })),
+              prompt: pack.prompts[0]?.text ?? prev.prompt,
+              auditUrl: pack.brand.websites[0] ?? prev.auditUrl,
+            }))
+          }
         />
       );
     }

@@ -1,5 +1,6 @@
 import { useState, useSyncExternalStore } from "react";
 import type { BrandConfig } from "@/components/dashboard/types";
+import { CATEGORY_PACKS, type CategoryPack } from "@/lib/category-packs";
 import {
   isCloudAvailable,
   isCloudEnabledByUser,
@@ -12,12 +13,14 @@ type ProjectSettingsTabProps = {
   brand: BrandConfig;
   onBrandChange: (patch: Partial<BrandConfig>) => void;
   onReset?: () => void;
+  onApplyPack?: (pack: CategoryPack) => void;
 };
 
 export function ProjectSettingsTab({
   brand,
   onBrandChange,
   onReset,
+  onApplyPack,
 }: ProjectSettingsTabProps) {
   return (
     <div className="space-y-5">
@@ -31,6 +34,37 @@ export function ProjectSettingsTab({
           browser — or in Supabase if cloud sync is enabled below.
         </p>
       </div>
+
+      {onApplyPack && (
+        <div className="rounded-xl border border-th-border bg-th-card-alt p-4">
+          <div className="font-serif text-lg text-th-text">Start from a category pack</div>
+          <p className="mt-1 text-sm text-th-text-muted">
+            One click fills the brand, 7 competitors and 12 unbranded shopping
+            questions (tagged discover → compare → buy).
+          </p>
+          <div className="mt-3 grid gap-2 md:grid-cols-3">
+            {CATEGORY_PACKS.map((pack) => (
+              <button
+                key={pack.id}
+                type="button"
+                onClick={() => {
+                  if (
+                    window.confirm(
+                      `Load the "${pack.label}" pack? This replaces the brand, competitors and questions in this workspace.`,
+                    )
+                  ) {
+                    onApplyPack(pack);
+                  }
+                }}
+                className="rounded-lg border border-th-border bg-th-card px-3 py-3 text-left transition-colors hover:border-th-accent hover:bg-th-accent-soft"
+              >
+                <div className="text-sm font-semibold text-th-text">{pack.label}</div>
+                <div className="mt-0.5 text-xs text-th-text-muted">{pack.blurb}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="grid gap-4 xl:grid-cols-2">
         <Field
