@@ -879,6 +879,8 @@ export function SovereignDashboard({
   }
 
   /** Run a single scrape against one specific provider */
+  const lastScrapeErrorRef = useRef<string>("");
+
   async function callScrapeOne(
     prompt: string,
     provider: Provider,
@@ -933,7 +935,10 @@ export function SovereignDashboard({
         competitorMentions: findMentions(answerText, competitorTerms),
         country: state.country,
       };
-    } catch {
+    } catch (err) {
+      // BrandSignal: remember why it failed so the UI can show the real reason.
+      const reason = err instanceof Error ? err.message : String(err);
+      lastScrapeErrorRef.current = `${PROVIDER_LABELS[provider] ?? provider}: ${reason}`.slice(0, 300);
       return null;
     }
   }
@@ -962,7 +967,7 @@ export function SovereignDashboard({
 
       if (runs.length === 0) {
         setMessage(
-          "All scrape requests failed. Check your Bright Data config.",
+          `All scrape requests failed. Reason: ${lastScrapeErrorRef.current || "unknown"}`,
         );
         return;
       }
@@ -974,7 +979,7 @@ export function SovereignDashboard({
 
       const failed = count - runs.length;
       setMessage(
-        `Done: ${runs.length}/${count} model${count > 1 ? "s" : ""} returned results.${failed > 0 ? ` ${failed} failed.` : ""}`,
+        `Done: ${runs.length}/${count} model${count > 1 ? "s" : ""} returned results.${failed > 0 ? ` ${failed} failed. Last reason: ${lastScrapeErrorRef.current || "unknown"}` : ""}`,
       );
     } catch (error) {
       setMessage(
@@ -1030,7 +1035,7 @@ export function SovereignDashboard({
     }));
 
     setMessage(
-      `Batch complete: ${allRuns.length} results from ${prompts.length} prompts × ${providers.length} models.${failed > 0 ? ` ${failed} failed.` : ""}`,
+      `Batch complete: ${allRuns.length} results from ${prompts.length} prompts × ${providers.length} models.${failed > 0 ? ` ${failed} failed. Last reason: ${lastScrapeErrorRef.current || "unknown"}` : ""}`,
     );
     setBusy(false);
   }
